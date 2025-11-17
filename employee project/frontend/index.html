@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Employee & Task Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+
+    <!-- ===== Login Page ===== -->
+    <main id="login-page" class="page active">
+      <div class="card auth-card">
+        <h1>Sign in</h1>
+        <div class="form-row">
+          <label>Email</label>
+          <input id="login-email" type="email" placeholder="you@example.com" />
+        </div>
+        <div class="form-row">
+          <label>Password</label>
+          <input id="login-password" type="password" placeholder="password" />
+        </div>
+        <div class="form-row small">
+          <label>Role</label>
+          <select id="login-role">
+            <option value="admin">Admin</option>
+            <option value="employee">Employee</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <button id="btn-login" class="btn primary">Login</button>
+        </div>
+        <div class="form-row divider">or</div>
+        <div class="form-row">
+          <button id="btn-open-register" class="btn ghost">Create employee (Register)</button>
+        </div>
+      </div>
+    </main>
+
+    <!-- ===== Dashboard ===== -->
+    <header id="topbar" class="hidden">
+      <div class="brand">Employee & Task Management</div>
+      <div class="top-actions">
+        <div id="top-user" class="muted"></div>
+        <button id="btn-logout" class="btn ghost">Logout</button>
+      </div>
+    </header>
+
+    <div id="dashboard" class="hidden">
+      <aside class="sidebar">
+        <nav>
+          <button class="nav-btn active" data-target="employees-view" id="nav-employees">Employees</button>
+          <button class="nav-btn" data-target="tasks-view" id="nav-tasks">Tasks</button>
+        </nav>
+      </aside>
+
+      <section class="content">
+
+        <!-- ===== Employees View (Admin only) ===== -->
+        <div id="employees-view" class="view">
+          <div class="view-header">
+            <h2>Employees</h2>
+            <div>
+              <button id="btn-add-employee" class="btn primary">Add Employee</button>
+              <input id="search-employee" placeholder="Search by name or email" />
+            </div>
+          </div>
+
+          <table class="table">
+            <thead>
+              <tr><th>ID</th><th>Name</th><th>Email</th><th>Position</th><th>Role</th><th>Actions</th></tr>
+            </thead>
+            <tbody id="employees-tbody"></tbody>
+          </table>
+        </div>
+
+        <!-- ===== Tasks View ===== -->
+        <div id="tasks-view" class="view hidden">
+          <div class="view-header">
+            <h2 id="tasks-title">Tasks</h2>
+            <div>
+              <button id="btn-add-task" class="btn primary">Add Task</button>
+              <select id="filter-employee"><option value="">All employees</option></select>
+              <select id="filter-status"><option value="">All</option><option value="false">Incomplete</option><option value="true">Completed</option></select>
+              <input id="search-task" placeholder="Search task title" />
+            </div>
+          </div>
+
+          <table class="table">
+            <thead>
+              <tr><th>ID</th><th>Title</th><th>Description</th><th>Assigned</th><th>Completed</th><th>Actions</th></tr>
+            </thead>
+            <tbody id="tasks-tbody"></tbody>
+          </table>
+        </div>
+
+      </section>
+    </div>
+
+    <!-- ===== Notifications (toast) ===== -->
+    <div id="toast" class="toast hidden"></div>
+
+    <!-- ===== Employee Modal ===== -->
+    <div id="modal-employee" class="modal hidden" role="dialog" aria-hidden="true">
+      <div class="modal-content">
+        <h3 id="emp-modal-title">Add Employee</h3>
+        <input id="emp-id" type="hidden" />
+        <label>Name</label><input id="emp-name" />
+        <label>Email</label><input id="emp-email" type="email" />
+        <label>Position</label><input id="emp-position" />
+        <label>Password (optional)</label><input id="emp-password" type="password" />
+        <div class="modal-actions">
+          <button id="emp-save" class="btn primary">Save</button>
+          <button id="emp-cancel" class="btn ghost">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== Task Modal ===== -->
+    <div id="modal-task" class="modal hidden" role="dialog" aria-hidden="true">
+      <div class="modal-content">
+        <h3 id="task-modal-title">Add Task</h3>
+        <input id="task-id" type="hidden" />
+        <label>Title</label><input id="task-title" />
+        <label>Description</label><textarea id="task-desc"></textarea>
+        <label>Assign to (employee id)</label><input id="task-employee" type="number" />
+        <label>Completed</label>
+        <select id="task-completed"><option value="false">False</option><option value="true">True</option></select>
+        <div class="modal-actions">
+          <button id="task-save" class="btn primary">Save</button>
+          <button id="task-cancel" class="btn ghost">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
