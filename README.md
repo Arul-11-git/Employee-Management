@@ -72,9 +72,17 @@ Role is assigned during login based on backend validation.
 
 Clean, responsive UI layout.
 
-Role-based dashboard rendering.
+## Authentication:
 
-Secure login with bcrypt hashing.
+Login using email & password
+
+Password hashing (bcrypt)
+
+Role-based access:
+
+Admin: Manage employees + tasks
+
+Employee: Can view only tasks assigned to them
 
 Search and filter functionality for employees and tasks.
 
