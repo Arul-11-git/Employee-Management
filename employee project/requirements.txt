@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+sqlalchemy
+pymysql
+bcrypt
+python-multipart
+fastapi[all]
+
