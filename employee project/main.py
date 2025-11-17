@@ -9,24 +9,24 @@ from schemas import EmployeeCreate, EmployeeUpdate, EmployeeOut, TaskCreate, Tas
 import models
 from models import Employee, Task
 
-# Create tables (if not exist)
+
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
 origins = [
-    "*",  # allow all origins for testing, in production specify your frontend URL
+    "*", 
 ]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,          # allow these origins
+    allow_origins=origins,         
     allow_credentials=True,
-    allow_methods=["*"],            # allow all HTTP methods
-    allow_headers=["*"],            # allow all headers
+    allow_methods=["*"],            
+    allow_headers=["*"],            
 )
 
-# -------- EMPLOYEES ---------
+#EMPLOYEES
 
 @app.post("/register", response_model=EmployeeOut)
 def register(emp: EmployeeCreate, db: Session = Depends(get_db)):
@@ -74,7 +74,7 @@ def delete_employee(emp_id: int, db: Session = Depends(get_db)):
     return crud.delete_employee(db, emp_id)
 
 
-# -------- TASKS ---------
+#TASKS
 
 @app.post("/tasks", response_model=TaskOut)
 def create_task(task: TaskCreate, db: Session = Depends(get_db)):
@@ -100,3 +100,4 @@ def update_task(task_id: int, task: TaskUpdate, db: Session = Depends(get_db)):
 @app.delete("/tasks/{task_id}")
 def delete_task(task_id: int, db: Session = Depends(get_db)):
     return crud.delete_task(db, task_id)
+
