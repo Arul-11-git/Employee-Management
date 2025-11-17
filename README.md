@@ -17,10 +17,8 @@ pip install -r requirements.txt
 Update your MySQL credentials in database.py.
 
 Run the backend:
-
-bash
-Copy code
 uvicorn main:app --reload
+
 3. Frontend Setup
 Open index.html directly
 or serve locally:
