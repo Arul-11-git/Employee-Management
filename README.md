@@ -27,7 +27,7 @@ or serve locally:
 python -m http.server 8000
 Ensure your backend is running before using the UI.
 
-TECH STACK
+## 2.TECH STACK
 Frontend:
 HTML
 CSS
@@ -42,10 +42,12 @@ bcrypt (password hashing)
 Database:
 MySQL
 
-Screenshots / Recording
+## 3.SCREENSHOTS
 Add your screenshots or screen recording here:
+<img width="660" height="638" alt="s1" src="https://github.com/user-attachments/assets/1a18163a-b635-41f9-a12b-ae7faf462ca9" />
 
-ASSUMPTION AND BONUS FEATURES
+
+## 4.ASSUMPTION AND BONUS FEATURES
 Assumptions:
 
 Admin users are created manually or seeded.
@@ -54,7 +56,7 @@ Employees have restricted access and can see only tasks assigned to them.
 
 Role is assigned during login based on backend validation.
 
-Bonus Features
+## Bonus Features
 
 Clean, responsive UI layout.
 
